@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.alibaba.ir/h2/desktop/assets/fonts/alibaba/alibaba-regular.woff2-5d2979c4.woff2"
+      crossorigin=""
+      as="font"
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.alibaba.ir/h2/desktop/assets/fonts/alibaba/alibaba-bold.woff2-bbb24413.woff2"
+      crossorigin=""
+      as="font"
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.alibaba.ir/h2/desktop/assets/fonts/alibaba/alibaba-black.woff2-41970917.woff2"
+      crossorigin=""
+      as="font"
+      type="font/woff2"
+    />
+    <style>
+      @font-face {
+        font-family: "Alibaba";
+        src: url("assets/fonts/alibaba-regular.woff2-5d2979c4.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        font-family: "Alibaba", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img height="48" width="160" alt="لوگوی علی بابا" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMyIiBoZWlnaHQ9IjQ4IiB2aWV3Qm94PSIwIDAgMTMyIDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNODMuODkxOCAyOS4xMDk1QzgzLjg5MTggMzMuMzQyOCA4MS44NTUgMzcuMzA4NSA3Ny4xMDU0IDM3LjMwODVDNzUuMzE3NCAzNy4zMDg1IDc0LjA2MDIgMzYuNjk4NiA3My4yMDg3IDM1Ljg1NTdMNzIuODE4OSAzNy4zMDg1SDcwLjUwNTlWMTYuMzkyNEg3My40NDAyVjI5LjMwOEM3My40NDAyIDMxLjkyNDUgNzQuMDczMiAzNC43NTk2IDc3LjIxMTggMzQuNzQzOEM4MC4yNTU1IDM0LjcyOTQgODAuOTI0NCAzMS43NzM0IDgwLjkyNDQgMjkuMzA4QzgwLjkyNDQgMjYuODQyNSA4MC4yNTQxIDIzLjkwNTMgNzcuMjEwNCAyMy44OTIzQzc2LjU3MTUgMjMuODk5NSA3NS45Mzg3IDI0LjAxNzggNzUuMzQwNCAyNC4yNDE5VjIxLjg1NjlDNzYuMTUxMSAyMS41MzQgNzcuMDEyNiAyMS4zNTc3IDc3Ljg4NSAyMS4zMzYyQzgyLjA0NDkgMjEuMzM2MiA4My44OTE4IDI1LjQ0NTggODMuODkxOCAyOS4xMDk1Wk01Ny4yOTgyIDM3LjMwODVINjAuMjM0MVYxNi4zOTI0SDU3LjI5ODJWMzcuMzA4NVpNMTA5LjgwOSAyMS4zNDJDMTA4LjkzNyAyMS4zNjM1IDEwOC4wNzUgMjEuNTM5OCAxMDcuMjY1IDIxLjg2MjdWMjQuMjQ3NkMxMDcuODYzIDI0LjAyMzQgMTA4LjQ5NiAyMy45MDUxIDEwOS4xMzUgMjMuODk4MUMxMTIuMTc4IDIzLjkxMSAxMTIuODQ5IDI2Ljg0OTcgMTEyLjg0OSAyOS4zMTM3QzExMi44NDkgMzEuNzc3OCAxMTIuMTc3IDM0LjczMDkgMTA5LjEyOSAzNC43NDM4QzEwNS45OSAzNC43NTk2IDEwNS4zNTcgMzEuOTI0NSAxMDUuMzU3IDI5LjMwOFYxNi4zOTI0SDEwMi40MjNWMzcuMzA5OUgxMDQuNzM2TDEwNS4xMjQgMzUuODU3MUMxMDUuOTc3IDM2LjcwMDEgMTA3LjIzNSAzNy4zMDk5IDEwOS4wMjMgMzcuMzA5OUMxMTMuNzY5IDM3LjMwOTkgMTE1LjgwOSAzMy4zNDI4IDExNS44MDkgMjkuMTEwOUMxMTUuODA5IDI1LjQ0NTggMTEzLjk2MiAyMS4zMzYyIDEwOS44MDkgMjEuMzM2MlYyMS4zNDJaTTEzMC42NjcgMzMuMTgzMVYyNy43MDEzQzEzMC42NjcgMjMuMzg2IDEyNy44ODUgMjEuMzQ5MiAxMjQuNjc4IDIxLjM0OTJDMTIxLjI5MSAyMS4zNDkyIDExOC45MSAyMy41NSAxMTguOTEgMjMuNTVMMTIwLjMxMSAyNS41NTIzQzEyMC42MjggMjUuMjk5MSAxMjIuMzExIDI0LjAzOSAxMjQuNTE3IDI0LjAzOUMxMjYuNCAyNC4wMzkgMTI3LjkyNiAyNC45MDIxIDEyNy45MjYgMjcuNzk0OFYzMS4yMDI0QzEyNy45MjYgMzMuNzQ5OCAxMjUuMzM3IDM0Ljg0MyAxMjMuNTkxIDM0Ljg0M0MxMjIuMDM5IDM0Ljg0MyAxMjAuODk4IDM0LjIyMTYgMTIwLjg5OCAzMi44NDc5QzEyMC44OTggMzAuNTIyIDEyNC4wOTIgMjkuODI3MyAxMjYuMDE5IDI5LjkyNTFWMjcuNjgyNkMxMjEuNzk0IDI3LjQ2NTQgMTE4LjAwNiAyOS4yMjE3IDExOC4wMDYgMzMuMDIzNEMxMTguMDA2IDM1LjY2NzMgMTIwLjA1NyAzNy4zMDQyIDEyMy4xMjkgMzcuMzA0MkMxMjUuNDMxIDM3LjMwNDIgMTI3LjQyIDM2LjQxNjcgMTI4LjM5MiAzNS40NDcyQzEyOC45MTMgMzYuNzc5MiAxMzAuMzI3IDM3LjMwNDIgMTMxLjQyNSAzNy4zMDQyTDEzMiAzNS4xNTgxQzEzMS4wNzcgMzQuOTU2NyAxMzAuNjcxIDM0LjUxNTEgMTMwLjY3MSAzMy4xNzc0TDEzMC42NjcgMzMuMTgzMVpNOTguNzQ5MyAzMy4xODMxVjI3LjcwMTNDOTguNzQ5MyAyMy4zODYgOTUuOTY3NCAyMS4zNDkyIDkyLjc2MTIgMjEuMzQ5MkM4OS4zNzM3IDIxLjM0OTIgODYuOTkzMSAyMy41NSA4Ni45OTMxIDIzLjU1TDg4LjM5NTYgMjUuNTUyM0M4OC43MTA2IDI1LjI5OTEgOTAuMzkzNSAyNC4wMzkgOTIuNjAwMSAyNC4wMzlDOTQuNDgzIDI0LjAzOSA5Ni4wMTA2IDI0LjkwMjEgOTYuMDEwNiAyNy43OTQ4VjMxLjIwMjRDOTYuMDEwNiAzMy43NDk4IDkzLjQyMTQgMzQuODQzIDkxLjY3MzcgMzQuODQzQzkwLjEyMTcgMzQuODQzIDg4Ljk4MSAzNC4yMjE2IDg4Ljk4MSAzMi44NDc5Qzg4Ljk4MSAzMC41MjIgOTIuMTc0MyAyOS44MjczIDk0LjEwMTggMjkuOTI1MVYyNy42ODI2Qzg5Ljg3NzEgMjcuNDY1NCA4Ni4wODgzIDI5LjIyMTcgODYuMDg4MyAzMy4wMjM0Qzg2LjA4ODMgMzUuNjY3MyA4OC4xMzk1IDM3LjMwNDIgOTEuMjEyIDM3LjMwNDJDOTMuNTEzNSAzNy4zMDQyIDk1LjUwMjggMzYuNDE2NyA5Ni40NzUyIDM1LjQ0NzJDOTYuOTk1OSAzNi43NzkyIDk4LjQwOTkgMzcuMzA0MiA5OS41MDc0IDM3LjMwNDJMMTAwLjA4MyAzNS4xNTgxQzk5LjE1OTMgMzQuOTU2NyA5OC43NTM3IDM0LjUxNTEgOTguNzUzNyAzMy4xNzc0TDk4Ljc0OTMgMzMuMTgzMVpNNTMuNjI1OSAzMy4xODMxVjI3LjcwMTNDNTMuNjI1OSAyMy4zODYgNTAuODQ0IDIxLjM0OTIgNDcuNjM3OCAyMS4zNDkyQzQ0LjI1MDMgMjEuMzQ5MiA0MS44Njk3IDIzLjU1IDQxLjg2OTcgMjMuNTVMNDMuMjc2NSAyNS41NTIzQzQzLjU5MTUgMjUuMjk5MSA0NS4yNzU5IDI0LjAzOSA0Ny40ODEgMjQuMDM5QzQ5LjM2NTMgMjQuMDM5IDUwLjg5MTUgMjQuOTAyMSA1MC44OTE1IDI3Ljc5NDhWMzEuMjAyNEM1MC44OTE1IDMzLjc0OTggNDguMzAyMyAzNC44NDMgNDYuNTU0NiAzNC44NDNDNDUuMDA0IDM0Ljg0MyA0My44NjMzIDM0LjIyMTYgNDMuODYzMyAzMi44NDc5QzQzLjg2MzMgMzAuNTIyIDQ3LjA1NTIgMjkuODI3MyA0OC45ODQxIDI5LjkyNTFWMjcuNjgyNkM0NC43NTggMjcuNDcxMSA0MC45NzUgMjkuMjI3NCA0MC45NzUgMzMuMDI5MkM0MC45NzUgMzUuNjczIDQzLjAyNjIgMzcuMzA5OSA0Ni4wOTg3IDM3LjMwOTlDNDguNDAwMSAzNy4zMDk5IDUwLjM4OCAzNi40MjI0IDUxLjM2MDQgMzUuNDUyOUM1MS44ODI2IDM2Ljc4NDkgNTMuMjk1MSAzNy4zMDk5IDU0LjM5NDEgMzcuMzA5OUw1NC45Njk0IDM1LjE2MzhDNTQuMDM1OSAzNC45NTY3IDUzLjYzMzEgMzQuNTE1MSA1My42MzMxIDMzLjE3NzRMNTMuNjI1OSAzMy4xODMxWk02My44OTc3IDM3LjMxNTdINjYuODMyMVYyMS44MjI0SDYzLjg5NzdWMzcuMzE1N1pNNjMuODk3NyAxOS4zMzU0SDY2LjgzMjFWMTYuMzkyNEg2My44OTc3VjE5LjMzNTRaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMjcuMjMwOCAzNS43NTc5QzI3LjA4NyAzNi4wMTgyIDI2Ljc0MDMgMzYuMTM2MiAyNi40MzI1IDM2LjIyMzlMMjIuOTI0MiAzNy4yMTVDMjIuNjE2NCAzNy4zMDEzIDIyLjIzMjMgMzcuMzcxOCAyMS45NzQ4IDM3LjIyNTFDMjEuNzE3MyAzNy4wNzg0IDIxLjU4OTMgMzYuNzE0NCAyMS41MDczIDM2LjQwOEMxNi40MTI0IDE3LjQwMzYgMTUuNzA5IDEzLjMwNjkgMTMuNjU5MyAxMy4zMDY5QzExLjYwOTUgMTMuMzA2OSAxMC45MTE5IDE3LjQwMzYgNS44MTEyNCAzNi40MDhDNS43MjkyNSAzNi43MTQ0IDUuNTk4MzUgMzcuMDc4NCA1LjM0Mzc1IDM3LjIyNTFDNS4wODkxNSAzNy4zNzE4IDQuNzAwNzcgMzcuMzAxMyA0LjM5Mjk1IDM3LjIxNUwwLjg4NDYyOSAzNi4yMjM5QzAuNTc2ODA2IDM2LjEzNjIgMC4yMzE1ODcgMzYuMDE4MiAwLjA4Nzc0NDQgMzUuNzU3OUMtMC4wNTYwOTgyIDM1LjQ5NzUgMC4wMDcxOTI1NCAzNS4xMTYzIDAuMDg3NzQ0NCAzNC44MTg2QzUuMzAyMDQgMTUuNDY3NSA4LjIxNDg0IDEwIDEzLjY1OTMgMTBDMTkuMTAzNyAxMCAyMi4wMjIzIDE1LjQ2NiAyNy4yMjk0IDM0LjgxODZDMjcuMzA5OSAzNS4xMTYzIDI3LjM3MDQgMzUuNTA2MiAyNy4yMzA4IDM1Ljc1NzlaIiBmaWxsPSIjRkRCOTEzIi8+CjxwYXRoIGQ9Ik0zMC4zNDc5IDIzLjUzNDFDMzAuMzQ0NyAyMy43MjAzIDMwLjMwMjEgMjMuOTAzNyAzMC4yMjI4IDI0LjA3MjFMMzAuMDc4OSAyNC40NzA2QzMwLjAxNTggMjQuNzA2MSAyOS44NzI5IDI0LjkxMjUgMjkuNjc0NyAyNS4wNTQ2QzI5LjQ0MzYgMjUuMTUxNyAyOS4xODYxIDI1LjE2NjQgMjguOTQ1NCAyNS4wOTYzQzI0LjM3MzggMjQuMDg3NCAxOS41OTQ4IDI0LjY3MDMgMTUuMzk5NiAyNi43NDg0QzExLjIwNDUgMjguODI2NSA3Ljg0NSAzMi4yNzUxIDUuODc3NCAzNi41MjMxQzUuNzMzNTYgMzYuODM5NiA1LjUwNjI5IDM3LjMwOTkgNC45OTQyMSAzNy4zMDk5QzQuNzg5MTggMzcuMzA5MSA0LjU4NTQ4IDM3LjI3NzEgNC4zOTAwNyAzNy4yMTVMMC44ODE3NTYgMzYuMjIzOUgwLjg3MzEyNUMwLjQ2NzQ4OSAzNi4xMDg5IDAgMzUuOTUyMSAwIDM1LjQwNEMwLjAxNDk5MTIgMzUuMTY2OSAwLjA3OTY4MjkgMzQuOTM1NiAwLjE4OTg3MyAzNC43MjUxQzIuNjgyNTggMjkuMzgyMiA3LjEwNzkgMjUuMTgyNyAxMi41NzQgMjIuOTczMUMxOC4wNDAxIDIwLjc2MzUgMjQuMTQwNiAyMC43MDggMjkuNjQ1OSAyMi44MTc4QzI5LjkxOTIgMjIuOTE4NSAzMC4zNDc5IDIzLjA3OTYgMzAuMzQ3OSAyMy41MzQxWiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzI1NzRfODIwOCkiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yNTc0XzgyMDgiIHgxPSIwLjAwMjg3Njg1IiB5MT0iMjkuMjg5MyIgeDI9IjMwLjM0NzkiIHkyPSIyOS4yODkzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIG9mZnNldD0iMC4zIiBzdG9wLWNvbG9yPSIjRkRCOTEzIi8+CjxzdG9wIG9mZnNldD0iMC43NSIgc3RvcC1jb2xvcj0iI0Y3OTQxRiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100">
+              <li class="nav-item dropdown px-3">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  بلیط
+                </a>
+                <ul class="dropdown-menu text-center">
+                  <li><a class="dropdown-item" href="#">پرواز داخلی</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">پرواز خارجی</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">قطار</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">اتوبوس</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown px-3">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  اقامت
+                </a>
+                <ul class="dropdown-menu text-center">
+                  <li><a class="dropdown-item" href="#">هتل</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">ویلا و اقامتگاه</a></li>
+                </ul>
+              </li>
+              <li class="nav-item px-3">
+                <a class="nav-link" href="#">تور</a>
+              </li>
+              <li class="nav-item dropdown px-3">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  بیشتر
+                </a>
+                <ul class="dropdown-menu text-center">
+                  <li><a class="dropdown-item" href="#">علی بابا پلاس</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">مجله علی بابا</a></li>
+                  <hr class="dropdown-divider">
+                  <li><a class="dropdown-item" href="#">بیمه مسافرتی</a></li>
+                </ul>
+              </li>
+              <div class="row w-50 me-auto text-secondary">
+                <a href="/help-center" class="col-sm-4 btn btn-link text-decoration-none d-flex align-items-center px-2 text-secondary">
+                  <svg viewBox="0 0 24 24" width="1.5em" fill="currentColor" data-v-d153afbe=""><path d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12S6.2 22.5 12 22.5 22.5 17.8 22.5 12 17.8 1.5 12 1.5ZM12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9Zm.242 12.634a.72.72 0 0 0-.72.72v.36a.72.72 0 0 0 .636.715l.084.005a.72.72 0 0 0 .72-.72v-.36a.72.72 0 0 0-.72-.72Zm-.285-9.068c-.5 0-.943.07-1.33.208a2.664 2.664 0 0 0-.98.592c-.264.258-.467.57-.605.937a3.48 3.48 0 0 0-.206 1.229c0 .354.054.683.164.99.108.308.257.6.441.878.185.279.394.541.629.788.232.247.475.488.724.721.286.266.48.565.578.897.1.334.147.693.147 1.078h1.445a6.226 6.226 0 0 0-.079-.96 2.803 2.803 0 0 0-.226-.726 3.122 3.122 0 0 0-.41-.636 11.256 11.256 0 0 0-.627-.69 56.686 56.686 0 0 0-.511-.519 3.796 3.796 0 0 1-.43-.507 2.073 2.073 0 0 1-.403-1.268c0-.546.144-.973.43-1.283.287-.31.703-.464 1.25-.464.228 0 .448.03.659.09.21.059.396.153.56.28a1.4 1.4 0 0 1 .395.484c.1.195.148.428.148.698h1.444a2.797 2.797 0 0 0-.258-1.186 2.65 2.65 0 0 0-.678-.885 3.035 3.035 0 0 0-1.01-.555 4.033 4.033 0 0 0-1.26-.191Z" fill-rule="evenodd"></path></svg>
+                  <span>مرکز پشتیبانی آنلاین</span>
+                </a>
+                
+                <a href="/profile/orders" class="col-sm-4 btn btn-link text-decoration-none d-flex align-items-center px-2 text-secondary">
+                  <svg viewBox="0 0 24 24" width="1.5em" fill="currentColor" data-v-d153afbe=""><path d="M13.875 1.5a1.5 1.5 0 0 1 1.496 1.388l.004.112v1.5h1.875a2.25 2.25 0 0 1 2.246 2.118l.004.132V18a2.25 2.25 0 0 1-2.118 2.246l-.132.004h-.375V21a.75.75 0 0 1-1.495.087L15.375 21v-.75h-4.97a3.001 3.001 0 0 1-2.755 2.246l-.15.004a3 3 0 0 1-2.25-4.984V6.75a2.25 2.25 0 0 1 2.118-2.246L7.5 4.5h1.875V3a1.5 1.5 0 0 1 1.388-1.496l.112-.004h3ZM7.5 18a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm9.75-12H7.5a.75.75 0 0 0-.745.663l-.005.087v9.845a3.004 3.004 0 0 1 3.655 2.155h6.845a.75.75 0 0 0 .745-.663L18 18V6.75a.75.75 0 0 0-.663-.745L17.25 6Zm-3 2.25a.75.75 0 0 1 .745.663L15 9v6.75a.75.75 0 0 1-1.495.088l-.005-.088V9a.75.75 0 0 1 .75-.75Zm-3.75 0a.75.75 0 0 1 .745.663L11.25 9v6.75a.75.75 0 0 1-1.495.088l-.005-.088V9a.75.75 0 0 1 .75-.75ZM13.875 3h-3v1.5h3V3Z" fill-rule="evenodd"></path></svg>
+                  <span>سفرهای من</span>
+                </a>
+                
+                <a href="/profile/orders" class="col-sm-4 btn btn-link text-decoration-none d-flex align-items-center px-2 text-secondary">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="ml-1 text-grays-500" data-v-d153afbe=""><path d="M17.25 12.75A3.75 3.75 0 0 1 21 16.5v3.75a.75.75 0 0 1-.75.75H3.75a.75.75 0 0 1-.75-.75V16.5a3.75 3.75 0 0 1 3.75-3.75h10.5Zm0 1.5H6.75A2.25 2.25 0 0 0 4.5 16.5v3h15v-3a2.25 2.25 0 0 0-2.118-2.246l-.132-.004ZM12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 1 1 0-9Zm0 1.5a3 3 0 1 0-.001 5.999A3 3 0 0 0 12 4.5Z" fill-rule="evenodd"></path></svg>
+                    <span dir="rtl">ورود یا ثبت‌نام</span>
+                </a>
+              </div>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="pt-5">
+      <img src="https://cdn.alibaba.ir/h2/desktop/assets/images/hero/hero-e1fa22fb.webp" class="img-fluid pt-4" alt="" />
+      <div class="container">
+        <div class="card" style="top: -50px">
+          <div class="card-header bg-white pt-3">
+            <div class="row">
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="M5.557 5.565c.45-.45.713-.435 1.163-.06l.105.09a.75.75 0 0 1 .112.105l.255.255 3 3.293a.667.667 0 0 0 .675.195l1.988-.555a.682.682 0 0 0 .48-.75l-.045-.165a.376.376 0 0 1 0-.09l.075-.105c.067-.075.135-.158.21-.233l.113-.105c.12-.12.247-.127.33-.052l.682.682a.667.667 0 0 0 .66.173l2.37-.675a1.013 1.013 0 0 1 .982.217l.06.06h-.052l-6.105 2.82a.676.676 0 0 0-.217 1.065l3.217 3.525a.667.667 0 0 0 .75.158l1.5-.698a.188.188 0 0 1 .248.038.173.173 0 0 1 0 .217L15 18.098l-.082.097a.165.165 0 0 1-.233.045.172.172 0 0 1-.068-.195l.075-.135.69-1.5a.668.668 0 0 0-.157-.75l-3.518-3.217a.674.674 0 0 0-1.072.217l-2.85 6.09-.045-.052h-.038a1.012 1.012 0 0 1-.202-.96l.682-2.385a.667.667 0 0 0-.172-.66l-.698-.705a.187.187 0 0 1 0-.263l.12-.127a2.36 2.36 0 0 1 .24-.218l.105-.075h.18a.674.674 0 0 0 .863-.45l.57-2.01a.683.683 0 0 0-.195-.682l-3.293-3-.187-.18a1.92 1.92 0 0 1-.465-.63c-.09-.24 0-.45.3-.788h.007Zm10.373 13.5 3.082-3.075a1.5 1.5 0 0 0 .24-1.965l-.06-.09a1.5 1.5 0 0 0-1.875-.435l-1.035.473-2.25-2.475 5.25-2.438h.06a1.328 1.328 0 0 0 .33-2.205l-.044-.105-.128-.09a2.318 2.318 0 0 0-2.198-.45l-1.95.54-.42-.427a1.56 1.56 0 0 0-2.182.082 3.761 3.761 0 0 0-.75.863v.075a.668.668 0 0 0-.06.24v.165l-1.012.277-2.806-3.052-.18-.188a4.337 4.337 0 0 0-.36-.285 2.002 2.002 0 0 0-3 .15 1.995 1.995 0 0 0-.6 2.25l.045.105c.23.474.563.889.975 1.215l3 2.753-.3 1.035h-.165a.646.646 0 0 0-.307.097 3.54 3.54 0 0 0-.75.585l-.24.248a1.553 1.553 0 0 0 .06 2.047l.435.443-.563 1.987a2.325 2.325 0 0 0 .533 2.25l.052.053A1.327 1.327 0 0 0 9 19.365v-.067l2.43-5.25 2.475 2.25-.473 1.035.068-.083a1.516 1.516 0 1 0 2.453 1.778"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">پرواز داخلی</p>
+              </a>
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="M6.975 4.505a2.002 2.002 0 0 1 3-.15c.126.1.246.208.36.322l.18.188 2.76 3.052 1.012-.277v-.165a.668.668 0 0 1 .06-.24l.038-.075a3.72 3.72 0 0 1 .713-.863 1.56 1.56 0 0 1 2.204-.06l.42.428 1.973-.563a2.317 2.317 0 0 1 2.197.45l.105.09.053.053a1.327 1.327 0 0 1-.3 2.197h-.052l-5.25 2.438 2.25 2.475.99-.413a1.5 1.5 0 0 1 1.897.405l.067.09a1.5 1.5 0 0 1-.247 1.965l-3.082 3.075a1.523 1.523 0 1 1-2.468-1.785l-.037.06.472-1.035-2.475-2.25-2.43 5.25v.068a1.334 1.334 0 0 1-2.205.315l-.053-.053a2.25 2.25 0 0 1-.532-.93 5.4 5.4 0 0 0 1.32-1.042v.082a.99.99 0 0 0 .203.953h.044v.052-.037l2.813-6.12a.676.676 0 0 1 1.072-.218l3.518 3.218a.668.668 0 0 1 .157.75l-.69 1.5-.075.135a.173.173 0 0 0 .194.222.163.163 0 0 0 .107-.072l.082-.098 3.157-3.157a.172.172 0 0 0 0-.218.188.188 0 0 0-.247-.037l-1.5.697a.674.674 0 0 1-.75-.157l-3.225-3.428A.674.674 0 0 1 15 10.527l6.105-2.82h.052l-.06-.06a1.012 1.012 0 0 0-1.02-.255l-2.37.675a.675.675 0 0 1-.66-.172l-.682-.683c-.082-.075-.21-.067-.33.053l-.113.105c-.075.075-.142.157-.21.232l-.075.105a.376.376 0 0 0 0 .09l.045.165a.683.683 0 0 1-.48.75l-1.987.555a.675.675 0 0 1-.675-.195l-3-3.292-.255-.255-.105-.105-.105-.09c-.457-.375-.75-.39-1.17.06-.42.45-.39.547-.3.787.12.244.289.46.495.638l.188.18 3.3 3a.682.682 0 0 1 .187.682l-.525 2.108a5.437 5.437 0 0 0-.832-1.988 5.445 5.445 0 0 0-1.785-1.65L7.395 8.052a3.57 3.57 0 0 1-.975-1.215l-.045-.105a2.002 2.002 0 0 1 .6-2.227Zm-1.072 4.95a4.403 4.403 0 1 1 0 8.805 4.403 4.403 0 0 1 0-8.805Zm.93 4.942h-1.86c.032.73.195 1.45.48 2.123.09.22.222.422.39.592l.06.053.097-.023c.167-.17.3-.371.39-.592a6.157 6.157 0 0 0 .442-2.153Zm-2.948 0h-1.26a3.345 3.345 0 0 0 1.777 2.423 7.418 7.418 0 0 1-.517-2.423Zm5.295 0H7.92a7.629 7.629 0 0 1-.51 2.423 3.338 3.338 0 0 0 1.77-2.423Zm-4.785-3.502a3.353 3.353 0 0 0-1.77 2.422h1.26c.037-.83.21-1.648.51-2.422Zm3 0 .045.112c.271.743.428 1.521.465 2.31h1.26a3.338 3.338 0 0 0-1.755-2.422h-.015Zm-1.5-.353-.06.06c-.167.17-.3.372-.39.593a6.157 6.157 0 0 0-.48 2.122h1.867a6.157 6.157 0 0 0-.48-2.122A1.83 1.83 0 0 0 6 10.602l-.105-.06Z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">پرواز خارجی</p>
+              </a>
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="m16.655 16.073.045.06 2.573 3.855a.645.645 0 0 1-1.028.75l-.045-.06-2.572-3.855a.645.645 0 0 1 1.027-.75Zm-7.852-.12a.637.637 0 0 1 .217.825l-.037.067L6.41 20.7a.645.645 0 0 1-.877.18.638.638 0 0 1-.21-.825v-.067l2.572-3.855a.63.63 0 0 1 .908-.18Zm6.397 2.46a.645.645 0 0 1 .075 1.282H9.41a.645.645 0 0 1-.075-1.282H15.2ZM13.91 16.5a.645.645 0 0 1 .075 1.282H10.7a.645.645 0 0 1-.075-1.282h3.285ZM15.523 3a3.217 3.217 0 0 1 3.21 3.202v7.073a1.93 1.93 0 0 1-1.95 1.928h-9a1.928 1.928 0 0 1-1.905-1.928V6.202A3.218 3.218 0 0 1 9.095 3h6.428Zm1.927 6.832-.832.413a4.575 4.575 0 0 1-1.8.465h-4.785a4.613 4.613 0 0 1-1.823-.383l-.195-.09-.825-.412v3.45a.645.645 0 0 0 .57.637h9.023a.645.645 0 0 0 .645-.637l.022-3.443Zm-8.55 1.5a.969.969 0 0 1 .536 1.706.967.967 0 1 1-.536-1.706Zm6.81 0a.967.967 0 1 1-.96.96.959.959 0 0 1 .96-.944v-.016Zm-.187-7.057H9.095A1.935 1.935 0 0 0 7.16 6.202v2.175l1.373.698c.39.194.817.309 1.252.338h4.823a3.39 3.39 0 0 0 1.275-.255l.165-.075 1.402-.706V6.202a1.928 1.928 0 0 0-1.815-1.927h-.112Zm-1.29.637a.645.645 0 0 1 .075 1.283h-3.93a.652.652 0 0 1-.645-.645.645.645 0 0 1 .57-.638h3.93Z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">قطار</p>
+              </a>
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="M15.48 3a3.33 3.33 0 0 1 3.33 3.33h.668a1.335 1.335 0 0 1 1.327 1.23v2.1a.667.667 0 0 1-1.328.083V7.65h-.667v8.662a2.01 2.01 0 0 1-1.342 1.89v1.11a1.665 1.665 0 1 1-3.33 0v-.997h-3.75v.997a1.665 1.665 0 1 1-3.33 0v-1.11a2.01 2.01 0 0 1-1.335-1.89V7.65h-.646v1.995a.667.667 0 0 1-1.327.105v-2.1a1.343 1.343 0 0 1 1.23-1.335h.75A3.33 3.33 0 0 1 9.075 3h6.405ZM9.075 18.315h-.667v.997a.338.338 0 0 0 .667.06v-1.057Zm7.065 0h-.66v.997a.33.33 0 0 0 .545.259.337.337 0 0 0 .115-.199v-1.057Zm-9.06-5.648v3.646a.675.675 0 0 0 .585.667h9.143a.667.667 0 0 0 .667-.585v-3.75a14.287 14.287 0 0 1-10.395.023Zm1.732 1.178a.668.668 0 0 1 .668.667v1.073a.667.667 0 1 1-1.335 0v-1.073a.668.668 0 0 1 .668-.667Zm6.93 0a.668.668 0 0 1 .668.667v1.073a.667.667 0 1 1-1.335 0v-1.073a.668.668 0 0 1 .668-.667Zm-.262-9.532H9.075A1.995 1.995 0 0 0 7.08 6.195v5.055a12.982 12.982 0 0 0 10.388 0V6.315a2.003 2.003 0 0 0-1.988-2.002Zm-.645 1.335a.66.66 0 0 1 .645.667.653.653 0 0 1-.57.66H9.72a.668.668 0 0 1-.075-1.327h5.19Z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">اتوبوس</p>
+              </a>
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="M12 3a3.376 3.376 0 0 1 3.351 3H16.5a2.25 2.25 0 0 1 2.25 2.25v3.095A3.001 3.001 0 0 1 21 14.25v2.25a1.5 1.5 0 0 1-1.5 1.5h-.75a3 3 0 0 1-3 3h-7.5a3 3 0 0 1-3-3H4.5a1.5 1.5 0 0 1-1.496-1.388L3 16.5v-2.25a3 3 0 0 1 2.25-2.902V8.25A2.25 2.25 0 0 1 7.5 6h1.146A3.375 3.375 0 0 1 12 3Zm5.25 9-.997.75a3.75 3.75 0 0 1-2.002.742l-.001.758a.75.75 0 0 1-1.495.088l-.005-.088v-.75h-1.5v.75a.75.75 0 0 1-1.495.088l-.005-.088v-.758a3.75 3.75 0 0 1-1.838-.625l-.165-.117L6.75 12v6a1.5 1.5 0 0 0 1.388 1.496l.112.004h7.5a1.5 1.5 0 0 0 1.5-1.5v-6Zm-3 4.5a.75.75 0 0 1 .088 1.495L14.25 18h-4.5a.75.75 0 0 1-.087-1.495l.087-.005h4.5Zm4.5-3.548V16.5h.75v-2.25a1.5 1.5 0 0 0-.683-1.258l-.066-.04Zm-13.5-.001-.056.033a1.5 1.5 0 0 0-.69 1.153l-.004.113v2.25h.75v-3.549ZM16.5 7.5h-9a.75.75 0 0 0-.75.75v1.875l1.898 1.425a2.25 2.25 0 0 0 1.102.436v-.736a.75.75 0 0 1 1.495-.088l.005.088V12h1.5v-.75a.75.75 0 0 1 1.495-.088l.005.088v.736a2.25 2.25 0 0 0 .97-.344l.132-.092 1.898-1.425V8.25a.75.75 0 0 0-.663-.745L16.5 7.5Zm-4.5-3c-.911 0-1.67.65-1.84 1.493L10.158 6h3.68l-.025-.104a1.876 1.876 0 0 0-1.69-1.392L12 4.5Z"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">تور</p>
+              </a>
+              <a
+                href="#"
+                class="col-sm-2 d-flex justify-content-center flex-column btn border-0"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="36px"
+                  height="36px"
+                  fill="currentColor"
+                  class="block mx-auto mb-1"
+                  data-v-29842b7c=""
+                >
+                  <path
+                    d="M14.655 3.75a.675.675 0 0 1 .67.59l.005.085h2.595A2.175 2.175 0 0 1 20.1 6.6v12.067a1.425 1.425 0 0 1-1.425 1.425H5.107c-.75 0-1.357-.607-1.357-1.357v-7.966a2.228 2.228 0 0 1 2.047-2.242v-.015a.675.675 0 0 1 1.345-.085l.005.085v.007h2.738v-1.92a2.175 2.175 0 0 1 2.047-2.17v-.004a.675.675 0 0 1 1.345-.085l.006.085h.697a.674.674 0 0 1 .675-.675Zm-4.77 6.12H5.97a.877.877 0 0 0-.545.196l-.073.067a.879.879 0 0 0-.251.63v7.972c0 .003.003.007.007.007h4.778V9.87h-.001Zm2.712-4.096h-.537a.825.825 0 0 0-.825.826v12.142h2.063v-1.305a1.425 1.425 0 0 1 1.313-1.42l.111-.005h.548c.788 0 1.425.638 1.425 1.425v1.304l1.98.001a.07.07 0 0 0 .052-.022l.017-.023.006-.03V6.6a.825.825 0 0 0-.825-.825h-3.27l-.01-.001h-2.048Zm2.673 11.588h-.547a.075.075 0 0 0-.075.075v1.304h.697v-1.304a.075.075 0 0 0-.023-.052l-.023-.017-.029-.006Zm-6.758-.99a.675.675 0 0 1 .085 1.345l-.085.005h-2.04a.676.676 0 0 1-.084-1.345l.084-.005h2.04Zm0-2.76a.675.675 0 0 1 .085 1.345l-.085.005h-2.04a.676.676 0 0 1-.084-1.345l.084-.005h2.04Zm5.46-.322a.675.675 0 0 1 .085 1.345l-.085.005h-1.364a.676.676 0 0 1-.085-1.345l.085-.005h1.364Zm3.406 0a.675.675 0 0 1 .084 1.345l-.084.005h-1.366a.676.676 0 0 1-.084-1.345l.084-.005h1.366Zm-8.866-2.438a.675.675 0 0 1 .085 1.345l-.085.005h-2.04a.676.676 0 0 1-.084-1.345l.084-.005h2.04Zm5.46-.292a.675.675 0 0 1 .085 1.345l-.085.005h-1.364a.676.676 0 0 1-.085-1.345l.085-.005h1.364Zm3.406 0a.675.675 0 0 1 .084 1.345l-.084.005h-1.366a.676.676 0 0 1-.084-1.345l.084-.005h1.366Zm-3.405-2.723a.675.675 0 0 1 .084 1.345l-.085.005h-1.364a.675.675 0 0 1-.085-1.344l.085-.006h1.364Zm3.405 0a.675.675 0 0 1 .084 1.345l-.084.005h-1.366a.675.675 0 0 1-.084-1.344l.084-.006h1.366Z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="d-flex justify-content-center">هتل</p>
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div style="max-width: 10rem">
+              <select
+                class="form-select rounded-5 text-center"
+                aria-label="Default select example"
+                dir="ltr"
+              >
+                <option selected>یک طرفه</option>
+                <option value="1">رفت و برگشت</option>
+              </select>
+            </div>
+            <div class="row py-3">
+              <div class="col-md-4 py-2">
+                <div class="input-group position-relative" dir="ltr">
+                  <input
+                    type="text"
+                    class="form-control py-2 rounded-start-3"
+                    dir="rtl"
+                    placeholder=" مقصد (شهر) "
+                  />
+                  <input
+                    type="text"
+                    class="form-control py-2 rounded-end-3"
+                    dir="rtl"
+                    placeholder="مبدا (شهر)"
+                  />
+                  <div
+                    class="position-absolute top-50 start-50 translate-middle"
+                    style="z-index: 1100"
+                  >
+                    <button
+                      type="button"
+                      class="btn rounded-circle p-0 z-5 bg-light border"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="1.5em"
+                        fill="currentColor"
+                        class="p-1"
+                      >
+                        <path
+                          d="m16.96 12.157.07.063 3.75 3.75a.757.757 0 0 1 .06.067l-.06-.067a.748.748 0 0 1 .22.53v.025a.728.728 0 0 1-.003.039L21 16.5a.747.747 0 0 1-.147.446l-.01.014-.008.01-.055.06-3.75 3.75a.75.75 0 0 1-1.123-.99l.063-.07 2.469-2.47H8.25a.75.75 0 0 1-.087-1.495l.087-.005h10.189l-2.47-2.47a.75.75 0 0 1-.062-.99l.063-.07a.75.75 0 0 1 .99-.063ZM8.03 3.22a.75.75 0 0 1 .063.99l-.063.07-2.47 2.47h10.19a.75.75 0 0 1 .088 1.495l-.088.005H5.56l2.47 2.47a.75.75 0 0 1 .063.99l-.063.07a.75.75 0 0 1-.99.063l-.07-.063-3.75-3.75-.055-.06a.644.644 0 0 1-.005-.007l.06.067A.756.756 0 0 1 3 7.5v-.014a.47.47 0 0 1 .003-.053L3 7.5a.756.756 0 0 1 .22-.53l3.75-3.75a.75.75 0 0 1 1.06 0Z"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 py-2">
+                <div class="input-group position-relative" dir="ltr">
+                  <input
+                    type="text"
+                    class="form-control py-2 rounded-start-3"
+                    dir="rtl"
+                    placeholder="تاریخ برگشت"
+                  />
+                  <input
+                    type="text"
+                    class="form-control py-2 rounded-end-3"
+                    dir="rtl"
+                    placeholder="تاریخ رفت"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 py-2">
+                <div class="row">
+                  <div class="col-6 ps-1">
+                    <input
+                      type="text"
+                      class="form-control py-2 rounded-end-3"
+                      dir="rtl"
+                      placeholder="مسافران"
+                    />
+                  </div>
+                  <div class="col-6 pe-1">
+                    <div class="d-grid gap-2 w-100">
+                      <button class="btn btn-warning py-2" type="button">
+                        جستجو
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="fw-bold py-3">سایر خدمات علی بابا</h5>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 border-start">
+                <img
+                  src="https://cdn.alibaba.ir/h2/desktop/assets/images/safarcard-3dc2c4c4.svg"
+                  alt="Alibaba https://cdn.alibaba.ir/h2/desktop/assets/images/safarcard-3dc2c4c4.svg"
+                  class="is-responsive is-animated"
+                  width="46"
+                  height="46"
+                  data-v-61eb9620=""
+                />
+                <span
+                  class="text-body-md md:mr-2 text-secondary"
+                  data-v-61eb9620=""
+                >
+                  سفرکارت (سازمانی)
+                </span>
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="https://cdn.alibaba.ir/h2/desktop/assets/images/insurance-icon-bb51c425.svg"
+                  alt="Alibaba https://cdn.alibaba.ir/h2/desktop/assets/images/insurance-icon-bb51c425.svg"
+                  class="is-responsive is-animated"
+                  width="46"
+                  height="46"
+                  data-v-61eb9620=""
+                />
+                <span
+                  class="text-body-md md:mr-2 text-secondary"
+                  data-v-61eb9620=""
+                >
+                  بیمه مسافرتی
+                </span>
+              </div>
+              <div class="col-md-3 border-end">
+                <img
+                  src="https://cdn.alibaba.ir/h2/desktop/assets/images/visa-icon-d8507c8e.svg"
+                  alt="Alibaba https://cdn.alibaba.ir/h2/desktop/assets/images/visa-icon-d8507c8e.svg"
+                  class="is-responsive is-animated"
+                  width="46"
+                  height="46"
+                  data-v-61eb9620=""
+                />
+                <span
+                  class="text-body-md md:mr-2 text-secondary"
+                  data-v-61eb9620=""
+                >
+                  ویزای سفر
+                </span>
+              </div>
+              <div class="col-md-3 border-end">
+                <img
+                  src="https://cdn.alibaba.ir/h2/desktop/assets/images/gtour-icon-5e641f1b.svg"
+                  alt="Alibaba https://cdn.alibaba.ir/h2/desktop/assets/images/gtour-icon-5e641f1b.svg"
+                  class="is-responsive is-animated"
+                  width="46"
+                  height="46"
+                  data-v-61eb9620=""
+                />
+                <span
+                  class="text-body-md md:mr-2 text-secondary"
+                  data-v-61eb9620=""
+                >
+                  تور گروهی
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide py-3"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+          </div>
+          <div class="carousel-inner rounded-3">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <img
+                    class="img-fluid"
+                    src="https://cdn.alibaba.ir/cms/uploads/Golden_Palace_Mashhad_Cardview_Banner_Desktop_02_09_04_2bef44c72c.png"
+                  />
+                </div>
+                <div class="col-6 d-none d-md-block">
+                  <img
+                    class="img-fluid"
+                    src="https://cdn.alibaba.ir/cms/uploads/Produckt_Marketing_Telephone_Sales_Cardview_Banner_Desktop_02_06_26_fb7b2fa3b6.png"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img
+                    class="img-fluid"
+                    src="https://cdn.alibaba.ir/cms/uploads/Espinas_Hotel_Campaign_Cardview_Banner_Desktop_02_06_19_361dd3ff7e.jpg"
+                  />
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                  <img
+                    class="img-fluid"
+                    src="https://cdn.alibaba.ir/cms/uploads/Safar_Card_Cardview_Banner_Desktop_02_09_22_ed374215f4.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="card mb-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row py-5">
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <img
+                      src="https://cdn.alibaba.ir/h2/desktop/assets/images/app-mobile/qrcode-56155e39.png"
+                      alt="بارکد دانلود اپلیکیشن علی بابا"
+                      class="is-responsive is-animated ml-8"
+                      width="148"
+                      height="185"
+                      style="margin-left: 0px"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="fw-bold">اپلیکیشن علی‌بابا</h4>
+                    <h5 class="pb-4">سریع‌تر و مطمئن‌تر به سفر بروید</h5>
+                    <a href="" class="text-primary text-decoration-none">
+                      <span>
+                        مشاهده لینک های دانلود
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="20"
+                          height="20"
+                          fill="currentColor"
+                          class="mr-2"
+                        >
+                          <path
+                            d="M16.698 21.266a.75.75 0 0 1-1.08 1.037l-.066-.069-8.25-9.75a.75.75 0 0 1-.058-.89l.058-.078 8.25-9.75a.75.75 0 0 1 1.202.893l-.056.075L8.858 12l7.84 9.266Z"
+                          ></path></svg>
+                      </span>
+                    </a>
+                    <div class="pt-3">
+                      <span class="flex align-items-end text-secondary text-2"
+                        ><img
+                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAALVBMVEVHcEzJ0Nq/x82/x83Ax83Ey9K/x83Ayc6/x82/x82/x82/x83AyM3Cys6+xswvwGblAAAADnRSTlMACu+yYRZyON3EooVNJ2sjt+sAAAEuSURBVDjLY2BAAVWtDFhB8LunWMV59d4pYJUIevduAlYJu3fvHLCJs79790gAmwTXu3fPsJrE9O6dAVaJuHePsZrEcO+FA3bvhRQwEA8YawrBtEyaO4q4SN+7d1MEGBid3717p4VkII/eO5CIyyIQ9e4Vwmn73qEAeNBzo4q/ewnTcg5dIgAizqqHJmEI1cCGyyQONAlVBhxWJOBw7DsBpAhFBo/h3utDlXgNl0Bz7TOSJV7jsgNh+TxUCUTSWofmD3iKyEOTaIRJ1KFJvIJJyKFJvNsAlWBGl3gFjSgWdIl3OtA0hR6D757jcO+7BlhifocjqtBth/udF03iCa6UiMi5EqgmXUDO+FhjioHBD1kCOYNyY0uI8KA3qa0BZRBT1ELBSDMVFDrOHVOgIgDdWvhBf9f4lgAAAABJRU5ErkJggg=="
+                          alt="ios logo"
+                          class="is-responsive is-animated ml-2 mb-1"
+                          width="20"
+                        />
+                        <img
+                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAKlBMVEVHcEy/x87CzM2/x83O09bByc/AyM6/x82/x82/x82/x83AyM7Ax82+xswqLt8wAAAADXRSTlMAdhjeBi1L78CulV+HMiPrHwAAAPlJREFUOMtjYBgFpAA24wTsfOa7RSgS6ncNYBK3UCTWwiQY794NQBJnvXtXAMJisb3bgCTBcfeyA5SZe/caUDpso3SqA4yHUJPTexcIbhxF0Q80dfJdKDB0RLZx7V0EKEd2Y+5dZIDwFSOK+N0JMHGWuagSN2Gu9biLBlqgEr3oElAtXHcxwAKwxF5MidsgcaZaTInrCkAJzrtYAMjFsSCGkCJMCMK6CpQAeeIiA4MsRBzKugkOwLt3LzEw6EIkYKwABh7sEgeAEY7NKGCsx97FZjnQ9r13sYLbKHGEBG5hhiAE3GCwxS5xmaEWu8R1hrs4AG4dOCXoAAAsa7wb0fLE0wAAAABJRU5ErkJggg=="
+                          alt="android logo"
+                          class="is-responsive is-animated ml-2 mb-1"
+                          width="20"
+                        /><span> قابلیت نصب روی Android و iOS</span></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center">
+                <img
+                  src="https://cdn.alibaba.ir/h2/desktop/assets/images/app-mobile/app-mobile@4x-e3e3b7dc.webp"
+                  alt="application screenshot"
+                  class="is-responsive is-animated shrink-0 self-end"
+                  width="334"
+                  height="294"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <h5 class="fw-bold py-3">پرسش های شما</h5>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseOne"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >چند روز قبل از پرواز، بلیط هواپیما را بخریم؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseOne"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  امکان رزرو بلیط هواپیما از ماه‌ها قبل وجود دارد. اما گاهی
+                  اوقات قیمت بلیط هواپیما در روزهای نزدیک به پرواز ارزان‌تر
+                  می‌شود. بنابراین در صورتی که شرایطتان اجازه می‌دهد، رزرو
+                  آنلاین بلیط هواپیما را به روزهای نزدیک پرواز موکول کنید. البته
+                  اگر قصد سفر در ایام پرسفر نظیر تعطیلات را دارید، باید هر چه
+                  زودتر رزرو بلیط هواپیما را انجام دهید.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >در هر پرواز، میزان بار مجاز چقدر است؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseTwo"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  میزان مجاز بار به کلاس پرواز و کلاس نرخی بلیط بستگی دارد.
+                  هنگام خرید آنلاین بلیط هواپیما می‌توانید میزان بار مجاز را در
+                  اطلاعات بلیط ببینید. طبیعی است که اگر میزان بارتان بیش از حد
+                  مجاز باشد، باید جریمه پرداخت کنید.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >نرخ بلیط هواپیما برای نوزادان و کودکان زیر ۱۲ سال چگونه
+                  است؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseThree"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  نرخ بلیط کودکان و نوزادان به کلاس پرواز و کلاس نرخی بستگی
+                  دارد. به صورت کلی، قیمت بلیط مسافر کودک (2 الی 12 سال) معادل
+                  50 الی 100 درصد بلیط بزرگسال، و قیمت بلیط مسافر نوزاد (تا دو
+                  سال) 10 درصد بلیط بزرگسال است. هنگام تهیه
+                  <a href="/" class="text-decoration-none">بلیط هواپیما</a> به
+                  این نکته توجه داشته باشید.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseFour"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseFour"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >رزرو آنلاین بلیط هواپیما هزینه بیشتری از خرید حضوری
+                  دارد؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseFour"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  خیر؛ زمانی که از یک سایت معتبر خرید بلیط هواپیما، اقدام به
+                  خرید می‌کنید، نه تنها هزینه بیشتری پرداخت نمی‌کنید، حتی ممکن
+                  است تخفیف هم بگیرید. ضمنا با خرید آنلاین بلیط هواپیما از
+                  پشتیبانی نیز برخودار هستید.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseFive"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseFive"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >آیا پس از خرید اینترنتی بلیط هواپیما امکان استرداد آن وجود
+                  دارد؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseFive"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  وقتی از علی‌بابا یعنی بهترین سایت خرید بلیط هواپیما ، بلیطتان
+                  را رزرو می‌کنید، خیالتان آسوده است که امکان استرداد وجه در
+                  صورت کنسل کردن بلیط وجود دارد. میزان جریمه را هم هنگام رزرو
+                  آنلاین بلیط هواپیما در قسمت قوانین استرداد بخوانید. میزان
+                  جریمه به نوع بلیط، کلاس پروازی، کلاس نرخی و... بستگی دارد.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseSix"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseSix"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >آیا پس از خرید بلیط هواپیما، امکان تغییر نام یا نام خانوادگی
+                  وجود دارد؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseSix"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  در پرواز داخلی یا خارجی، امکان تغییر نام و نام خانوادگی در
+                  بلیط سیستمی وجود ندارد. اما در بلیط چارتر، برخی از
+                  چارترکننده‌ها این تغییر را می‌پذیرند.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseSeven"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseSeven"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32px"
+                  height="32px"
+                  fill="currentColor"
+                  class="rounded-circle bg-info-subtle p-2"
+                >
+                  <path
+                    d="M14.442 16.905c0-1.427-.177-2.564-.531-3.411-.322-.77-.931-1.612-1.827-2.525l-.734-.726c-.787-.786-1.298-1.361-1.533-1.726a3.775 3.775 0 0 1-.646-2.126c0-1.005.249-1.776.747-2.312.498-.536 1.23-.804 2.197-.804.93 0 1.676.26 2.241.782.565.522.847 1.233.847 2.133h3.921c-.028-1.905-.68-3.413-1.953-4.524C15.898.556 14.212 0 12.115 0 9.951 0 8.266.548 7.06 1.645 5.853 2.74 5.25 4.275 5.25 6.248c0 1.752.814 3.476 2.442 5.17l1.996 1.954c.709.813 1.072 1.991 1.092 3.533h3.662Zm.273 5.027c0-.642-.199-1.159-.596-1.551-.397-.393-.936-.59-1.616-.59-.69 0-1.233.204-1.63.611-.397.407-.596.917-.596 1.53 0 .584.194 1.075.582 1.472.387.397.936.596 1.644.596.709 0 1.255-.199 1.637-.596.384-.397.575-.888.575-1.472Z"
+                  ></path>
+                </svg>
+                <span class="mx-2 fw-bold text-end"
+                  >هنگامی که از سایت خرید بلیط هواپیما رزرو بلیط را انجام
+                  می‌دهیم، امکان انتخاب صندلی مورد نظرمان وجود دارد؟</span
+                >
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseSeven"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="px-8 p-4 text-secondary">
+                  خیر؛ هنگام رزرو بلیط هواپیما داخلی یا خارجی امکان انتخاب صندلی
+                  وجود ندارد. البته در زمان چک‌این انتخاب محدوده صندلی
+                  امکان‌پذیر است.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-auto mb-5">
+          <h1 class="my-3 text-grays-700 font-bold text-6">بلیط هواپیما</h1>
+          <img
+            src="https://cdn.alibaba.ir/h2/desktop/assets/images/baggage/baggage@3x-bda919ec.webp"
+            alt="Alibaba"
+            class="img-fluid float-start"
+            style="width: 40%"
+            width="464"
+          />
+
+          <p class="text-secondary fs-6 my-5">
+            علی‌بابا بزرگترین و معتبرترین سایت خرید اینترنتی بلیط هواپیما ، قطار
+            و اتوبوس در کشور است که از سال ۱۳۹۳ کار خود را شروع کرده و در این
+            مدت توانسته رضایت درصد قابل توجهی از کاربران را به دست بیاورد. در
+            ابتدا، فروش بلیط پرواز داخلی در دستور کار علی‌بابا قرار داشت؛ اما به
+            مرور امکان خرید سایر محصولات گردشگری نیز به علی‌بابا اضافه شد.
+          </p>
+          <h3 class="fs-5 fw-bold text-dark">
+            مزایای خرید بلیط هواپیما از علی‌بابا
+          </h3>
+          <p class="text-secondary" style="font-size: 0.875rem">
+            شما با خرید بلیط هواپیما از علی‌بابا با سامانه مطمئن و معتبری
+            روبه‌رو هستید که تمام نیازهایتان را پاسخ می‌دهد. برای خرید آنلاین
+            بلیط هواپیما در علی‌بابا کافیست مبدا، مقصد و تاریخ پرواز خود را
+            انتخاب کنید. پس از کلیک روی جستجو، لیست
+            <a
+              href="/ticket-price"
+              class="text-decoration-none"
+              target="_blank"
+            >
+              قیمت بلیط هواپیما
+            </a>
+            به مقصد مورد نظر شما ظاهر می‌شود. در این لیست، انتخابهای متعددی پیش
+            روی شماست. برای اینکه گزینه‌ ها را برای خرید بلیط هواپیما محدودتر
+            کنید، علی‌بابا ابزارهای مختلفی در اختیار شما می‌گذارد.
+          </p>
+        </div>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          یکی از ابزارهای بسیار مفید و کاربردی برای خرید اینترنتی بلیط هواپیما،
+          تقویم قیمتی است. با استفاده از تقویم قیمتی شما می‌توانید کمترین و
+          بیشترین قیمت بلیط پرواز را در روزهای قبل و بعد از آن تاریخ مشاهده
+          کنید. در صورتی که اصرار به خرید بلیط هواپیما در یک روز خاص نداشته
+          باشید، این امکان به شما کمک می‌کند تا مبلغ بلیط هواپیما برایتان با
+          مبلغ به صرفه تری تمام شود.
+        </p>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          علاوه بر این، با استفاده از فیلترهای کنار صفحه می‌توانید ایرلاین مورد
+          نظرتان را انتخاب کنید. ضمنا می‌توانید،
+          <a
+            href="/charter-ticket"
+            class="text-decoration-none"
+            target="_blank"
+          >
+            بلیط چارتر هواپیما
+          </a>
+          یا سیستمی را فعال کنید تا فقط یکی از این دو نوع بلیط را مشاهده کنید.
+          <a href="/iranout" class="text-decoration-none" target="_blank">
+            بلیط هواپیما خارجی
+          </a>
+          ،کلاس پروازی و زمان پرواز هم از دیگر گزینه‌هایی است که با انتخاب آنها،
+          تعداد بلیط ها محدودتر و رزرو بلیط هواپیما برای شما آسانتر می‌شود.
+        </p>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          برای پرداخت هزینه می‌توانید از کارت شتاب استفاده کنید. پس از پرداخت،
+          خرید اینترنتی بلیط هواپیما با موفقیت انجام میشود و بلیط به ایمیل شما
+          ارسال میشود. همچنین در همه این مراحل، پشتیبانی علی‌بابا در کنار شماست
+          تا هر زمانی که سوال یا مشکلی داشتید، 24 ساعته پاسخگوی شما باشد.
+        </p>
+        <h3 class="fs-5 fw-bold text-dark">امکان استرداد بلیط هواپیما</h3>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          یکی دیگر از امکانات علی‌بابا استرداد آنلاین بلیط هواپیما (کنسلی بلیط)
+          است. در صورتی که پس از رزرو بلیط هواپیما برنامه سفرتان تغییر کرده، به
+          راحتی می‌توانید طبق قوانین کنسلی پرواز داخلی، بلیط هواپیمای خود را
+          کنسل کنید. پس از استرداد، پول شما در کمترین زمان ممکن به حسابتان
+          برگردانده می‌شود. شما برای خرید اینترنتی بلیط هواپیما از علی‌بابا
+          می‌توانید از تلفن همراه، رایانه شخصی یا تبلت استفاده کنید. علی‌بابا در
+          همه این ابزارها کاربرپسند است و شما خریدی آسان را تجربه خواهید کرد.
+          همچنین امکان نصب و استفاده از اپلیکیشن علی‌بابا برای گوشی های اندروید
+          و آیفون وجود دارد.
+        </p>
+        <h3 class="fs-5 fw-bold text-dark">
+          رزرو بلیط هواپیما از معتبرترین ایرلاین‌ها
+        </h3>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          شما برای خرید بلیط هواپیما از بین ایرلاینهای مختلف حق انتخاب دارید و
+          می‌توانید از ایرلاینهای ماهان، زاگرس، کیش ایر، قشم ایر، آسمان، کاسپین،
+          تابان، وارش یا معراج، بلیط پرواز داخلی خود را خریداری کنید.
+        </p>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          هر یک از این ایرلاین ها ویژگیها و مشخصات خود را دارند. برخی امکانات و
+          خدمات رفاهی بیشتر دارند و برخی دیگر بلیط هواپیما را با قیمت به صرفه
+          تری ارائه می‌دهند. زمانی که در علی‌بابا لیست بلیط تمام این ایرلاین ها
+          را مشاهده می‌کنید، می‌توانید از بین آنها انتخاب کنید.
+        </p>
+        <h3 class="fs-5 fw-bold text-dark">
+          علی‌بابا: رتبه یک خرید اینترنتی بلیط سفر
+        </h3>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          علی‌بابا طی این سالها، اعتبار زیادی نزد مشتریان خود کسب کرده است. طبق
+          نظرسنجی، 97.2 درصد از مشتریان علی‌بابا از خدمات این سامانه راضی
+          بوده‌اند و استفاده از آن را به دوستان و آشنایان خود پیشنهاد داده‌اند.
+          سرعت سادگی خرید اینترنتی بلیط هواپیما، اعتبار و خوشنامی، امکان استرداد
+          آنلاین بلیط هواپیما و پشتیبانی 24 ساعته در تمام روزهای هفته، رتبه یک
+          فروش بلیط را از آنِ علی‌بابا کرده است.
+        </p>
+        <p class="text-secondary" style="font-size: 0.875rem">
+          شما با رزرو بلیط هواپیما در علی‌بابا، از سفری راحت و بی‌دردسر مطمئن
+          خواهید بود.
+        </p>
+      </div>
+      <hr class="w-100" />
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-md-4 d-flex">
+            <img
+              src="data:image/webp;base64,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"
+              alt="Alibaba data:image/webp;base64,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"
+              class="is-responsive is-animated md:ml-2 ml-4"
+              width="89"
+              height="89"
+            />
+            <div class="text-secondary">
+              <h6 class="mt-0 mb-2 text-dark fw-bold">رتبه یک سفر</h6>
+              <span class="text-body-md" style="font-size: 0.875rem"
+                >معتبرترین عرضه‌کننده محصولات گردشگری در ایران</span
+              >
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <img
+              src="data:image/webp;base64,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"
+              alt="Alibaba data:image/webp;base64,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"
+              class="is-responsive is-animated md:ml-2 ml-4"
+              width="89"
+              height="89"
+            />
+            <div class="text-secondary">
+              <h6 class="mt-0 mb-2 text-dark fw-bold">همسفر هر سفر</h6>
+              <span class="text-body-md" style="font-size: 0.875rem"
+                >ارائه تمامی خدمات سفر (پرواز، قطار، اتوبوس، هتل و تور)</span
+              >
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <img
+              src="data:image/webp;base64,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"
+              alt="Alibaba data:image/webp;base64,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"
+              class="is-responsive is-animated md:ml-2 ml-4"
+              width="89"
+              height="89"
+            />
+            <div class="text-secondary">
+              <h6 class="mt-0 mb-2 text-dark fw-bold">همسفر همه لحظات سفر</h6>
+              <span class="text-body-md" style="font-size: 0.875rem"
+                >پشتیبانی و همراهی ۲۴ ساعته در تمامی مراحل سفر</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <hr />
+        <div class="row pt-3">
+          <div class="col-md-4 mb-3">
+            <a href="#" class="navbar-brand">
+              <img
+                src="https://cdn.alibaba.ir/h2/desktop/assets/images/shawl_logotype-d6b14ca0.svg"
+                alt="Alibaba Logo"
+                class="mb-4"
+                height="30"
+              />
+            </a>
+            <address class="fs-6 mb-5">
+              <p class="mb-3">
+                تلفن پشتیبانی:
+                <a dir="ltr" class="mr-3 text-decoration-none href="tel:02143900000"
+                  >۰۲۱ - ۴۳۹۰۰۰۰۰
+                </a>
+              </p>
+              <span class="fs-6">
+                دفتر پشتیبانی: اکباتان، نبش اتوبان لشگری، کوی بیمه، خیابان بیمه
+                چهارم، بن‌بست گل‌ها، پلاک 1
+              </span>
+            </address>
+          </div>
+
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">اطلاعات تکمیلی</h6>
+                <ul class="list-unstyled p-0">
+                  <li class="mb-2"><a href="/business" class="footer-link text-decoration-none text-dark">فروش سازمانی</a></li>
+                  <li class="mb-2"><a href="https://partner.alibaba.ir" class="footer-link text-decoration-none text-dark" target="_blank" rel="nofollow noopener noreferrer">همکاری با آژانس‌ها</a></li>
+                  <li class="mb-2"><a href="/jobs" class="footer-link text-decoration-none text-dark">فرصت‌های شغلی</a></li>
+                  <li class="mb-2"><a href="https://ecrating.ir/Clientdomains" class="footer-link text-decoration-none text-dark" target="_blank" rel="nofollow noopener noreferrer">سنجش رضایتمندی</a></li>
+                </ul>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">خدمات مشتریان</h6>
+                <ul class="list-unstyled p-0">
+                  <li class="mb-2"><a href="/help-center" class="footer-link text-decoration-none text-dark">مرکز پشتیبانی آنلاین</a></li>
+                  <li class="mb-2"><a href="/help-center/categories/purchase-guide" class="footer-link text-decoration-none text-dark">راهنمای خرید</a></li>
+                  <li class="mb-2"><a href="/help-center/categories/refund-guide" class="footer-link text-decoration-none text-dark">راهنمای استرداد</a></li>
+                  <li class="mb-2"><a href="/help-center/general-policy" class="footer-link text-decoration-none text-dark">قوانین و مقررات</a></li>
+                  <li class="mb-2"><a href="/help-center/categories/faq" class="footer-link text-decoration-none text-dark">پرسش و پاسخ</a></li>
+                </ul>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold">علی بابا</h6>
+                <ul class="list-unstyled p-0">
+                  <li class="mb-2"><a href="/about-us" class="footer-link text-decoration-none text-dark">درباره ما</a></li>
+                  <li class="mb-2"><a href="/help-center/contact-us" class="footer-link text-decoration-none text-dark">تماس با ما</a></li>
+                  <li class="mb-2"><a href="/why-alibaba" class="footer-link text-decoration-none text-dark">چرا علی‌بابا</a></li>
+                  <li class="mb-2"><a href="/plus" class="footer-link text-decoration-none text-dark">علی بابا پلاس</a></li>
+                  <li class="mb-2"><a href="/insurance" class="footer-link text-decoration-none text-dark">بیمه مسافرتی</a></li>
+                  <li class="mb-2">
+                    <a href="https://www.alibaba.ir/mag" 
+                       class="footer-link text-decoration-none text-dark" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                      مجله علی‌بابا
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row d-flex align-items-center pb-4">
+          <small class="text-secondary col-md-8" style="font-size: 0.875rem">
+              کلیه حقوق این سرویس (وب‌سایت و اپلیکیشن‌های موبایل) محفوظ و متعلق به شرکت سفرهای علی‌بابا می‌باشد. 
+              <span dir="ltr">(نسخه 2.82.2)</span>
+          </small>
+          <div class="text-center col-lg-4">
+              <a href="https://t.me/AlibabaTravels" class="text-secondary px-3 text-decoration-none" rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 25 25" width="35" height="35" fill="currentColor" class="block" title="Telegram logo"><path d="m10.282 13.788-.264 3.722c.379 0 .542-.162.74-.358l1.775-1.696 3.679 2.694c.674.376 1.15.178 1.332-.621l2.414-11.315c.215-.998-.36-1.388-1.018-1.143L4.747 10.504c-.969.377-.953.916-.165 1.16l3.63 1.13L16.64 7.52c.397-.263.758-.117.46.145l-6.818 6.123Z"></path></svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UChN_55cq3XLPUUv7RRzlNgQ" class="text-secondary px-3 text-decoration-none"  rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" class="block" title="youtube logo"><path d="M19.128 6.858c.248.248.427.558.519.897.528 2.127.406 5.487.01 7.696a2.012 2.012 0 0 1-1.416 1.416c-1.241.338-6.239.338-6.239.338s-4.997 0-6.239-.338a2.012 2.012 0 0 1-1.416-1.416c-.531-2.118-.386-5.48-.01-7.686a2.011 2.011 0 0 1 1.416-1.416C6.995 6.01 11.992 6 11.992 6s4.997 0 6.239.339c.339.091.648.27.897.519Zm-4.581 4.745-4.146 2.4v-4.8l4.146 2.4Z" fill-rule="evenodd"></path></svg>
+              </a>
+              <a href="https://twitter.com/alibaba_travels" class="text-secondary px-3 text-decoration-none"  rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" class="block" title="Twitter logo"><path d="M32 5.745a13.14 13.14 0 01-3.77 1.034 6.585 6.585 0 002.886-3.632 13.148 13.148 0 01-4.169 1.593 6.557 6.557 0 00-4.792-2.073 6.565 6.565 0 00-6.395 8.061 18.638 18.638 0 01-13.532-6.86 6.534 6.534 0 00-.89 3.301 6.562 6.562 0 002.922 5.464 6.539 6.539 0 01-2.974-.82v.082a6.569 6.569 0 005.266 6.437 6.574 6.574 0 01-2.965.113 6.572 6.572 0 006.133 4.56 13.173 13.173 0 01-8.154 2.81c-.53 0-1.052-.032-1.566-.092a18.583 18.583 0 0010.064 2.95c12.076 0 18.679-10.004 18.679-18.68 0-.285-.006-.568-.019-.85A13.343 13.343 0 0032 5.746" fill-rule="evenodd"></path></svg>
+              </a>
+              <a href="https://www.aparat.com/alibaba_travels" class="text-secondary px-3 text-decoration-none"  rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" class="block" title="Aparat logo"><path d="M28.057 25.12l-.853 3.202a4.955 4.955 0 01-6.06 3.515l-3.02-.814a15.185 15.185 0 009.933-5.904v.001zM16.007 2.127c7.66.004 13.871 6.214 13.871 13.873a13.873 13.873 0 01-16.586 13.604A13.881 13.881 0 012.39 18.703a13.867 13.867 0 015.905-14.24 13.877 13.877 0 017.71-2.335l.002-.001zM.892 18.415a15.172 15.172 0 005.606 9.527l-2.81-.749A4.952 4.952 0 01.17 21.135l.722-2.72zm19.825-.112a3.96 3.96 0 10-1.497 7.779 3.96 3.96 0 001.497-7.779zm-9.943-1.915a3.96 3.96 0 10-1.506 7.775 3.96 3.96 0 001.506-7.775zm5.48-2.02a1.76 1.76 0 10-.656 3.46 1.76 1.76 0 00.657-3.46zm6.482-6.544a3.961 3.961 0 00-1.5 7.778 3.94 3.94 0 002.974-.607 3.96 3.96 0 001.658-4.08 3.96 3.96 0 00-3.132-3.091zm2.43-3.86l3.152.837a4.953 4.953 0 013.522 6.044l-.866 3.277a15.168 15.168 0 00-5.808-10.159v.001zm-12.38 1.945a3.962 3.962 0 10-1.496 7.782 3.962 3.962 0 001.496-7.782zM7.107.673A4.957 4.957 0 0110.868.17l2.946.768a15.176 15.176 0 00-9.746 5.524l.735-2.776A4.953 4.953 0 017.107.673z" fill-rule="evenodd"></path></svg>
+              </a>
+              <a href="https://instagram.com/alibaba_travels" class="text-secondary px-3 text-decoration-none"  rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" class="block" title="Instagram logo"><path d="M17.638.001c2.88.005 3.49.028 4.951.095 1.703.078 2.866.348 3.883.743a7.841 7.841 0 012.833 1.845 7.842 7.842 0 011.845 2.833c.395 1.018.666 2.18.743 3.883.072 1.56.093 2.149.096 5.558v2.073c-.003 3.41-.024 3.999-.096 5.558-.077 1.703-.348 2.866-.743 3.883a7.844 7.844 0 01-1.845 2.833 7.842 7.842 0 01-2.833 1.845c-1.017.395-2.18.666-3.883.743-1.56.072-2.148.093-5.558.096h-2.073c-3.41-.003-3.998-.024-5.558-.096-1.702-.077-2.865-.348-3.883-.743a7.841 7.841 0 01-2.833-1.845A7.84 7.84 0 01.84 26.472c-.395-1.017-.665-2.18-.743-3.883-.067-1.462-.09-2.071-.095-4.95V14.35c.005-2.88.028-3.489.095-4.951.078-1.702.348-2.865.743-3.883a7.84 7.84 0 011.845-2.833A7.84 7.84 0 015.517.84C6.535.444 7.697.174 9.4.096c1.462-.067 2.071-.09 4.951-.095h3.287zm-.947 2.88h-1.392l-.323.001h-.596c-2.825.006-3.403.027-4.85.093-1.559.071-2.405.332-2.969.55a4.95 4.95 0 00-1.84 1.197 4.955 4.955 0 00-1.195 1.84c-.22.563-.48 1.41-.551 2.97-.066 1.445-.087 2.023-.092 4.848v.596l-.001.323v2.31c.006 2.825.027 3.403.093 4.849.07 1.56.332 2.406.55 2.97.29.747.638 1.28 1.197 1.84.56.559 1.093.906 1.84 1.196.563.219 1.41.48 2.97.55.385.018.709.032 1.03.044l.241.009c.769.024 1.605.035 3.302.039l.565.001h2.649l.565-.001c1.876-.004 2.7-.017 3.544-.048l.242-.01c.245-.009.499-.02.788-.034 1.56-.07 2.406-.331 2.97-.55a4.956 4.956 0 001.84-1.197 4.96 4.96 0 001.196-1.839c.219-.564.48-1.41.55-2.97.014-.29.025-.544.035-.788l.01-.243c.03-.843.043-1.668.047-3.543l.001-.565v-2.648l-.001-.566c.003-1.1-.01-2.202-.04-3.302l-.008-.241a108.34 108.34 0 00-.044-1.03c-.07-1.56-.331-2.407-.55-2.97a4.957 4.957 0 00-1.197-1.84 4.956 4.956 0 00-1.839-1.196c-.564-.22-1.41-.48-2.97-.551-1.446-.066-2.024-.087-4.849-.092h-.596l-.322-.001v-.001zm-.696 4.9a8.214 8.214 0 11.181 16.426 8.214 8.214 0 01-.181-16.426zm0 2.882a5.331 5.331 0 10-.146 10.662 5.331 5.331 0 00.146-10.662zm8.538-5.126a1.92 1.92 0 11.088 3.84 1.92 1.92 0 01-.088-3.84z" fill-rule="evenodd"></path></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/alibaba-travels" class="text-secondary px-3 text-decoration-none"  rel="noopener noreferrer" target="_blank">
+                  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" class="block" title="Linkedin logo"><path d="M25.333 0A6.667 6.667 0 0132 6.667v18.666A6.667 6.667 0 0125.333 32H6.667A6.667 6.667 0 010 25.333V6.667A6.667 6.667 0 016.667 0h18.666zm-8.637 11.13h-4.174v15.305h4.174v-7.797c0-4.331 5.565-4.686 5.565 0v7.797h4.174V17.03c0-7.309-7.797-7.043-9.74-3.445V11.13h.001zm-6.957 0H5.565v15.305H9.74V11.13h-.001zM7.652 4.458a2.445 2.445 0 00-2.435 2.454 2.445 2.445 0 002.435 2.454 2.444 2.444 0 002.435-2.454 2.444 2.444 0 00-2.435-2.454z" fill-rule="evenodd"></path></svg>
+              </a>
+          </div>
+      </div>
+      
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
